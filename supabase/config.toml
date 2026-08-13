@@ -1,0 +1,23 @@
+# Configuração mínima — só o necessário pra esta fase (núcleo de tenancy).
+# Gerada manualmente aqui porque não há Supabase CLI neste ambiente pra
+# rodar `supabase init` de verdade — ao rodar localmente pela primeira vez,
+# confira contra o que `supabase init` geraria por padrão e mescle o que
+# fizer sentido (porta, nome do projeto etc.).
+
+project_id = "mercados-autonomos"
+
+[auth]
+enabled = true
+
+# Custom Access Token Hook — é ISSO que faz o tenant_id/platform_role/
+# tenant_role (calculados na migration 0002) irem parar no JWT de verdade.
+# Sem esta seção registrada, a função existe no banco mas nunca é chamada.
+[auth.hook.custom_access_token]
+enabled = true
+uri = "pg-functions://postgres/public/custom_access_token_hook"
+
+[db]
+port = 54322
+
+[api]
+port = 54321

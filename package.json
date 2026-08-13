@@ -1,0 +1,20 @@
+{
+  "name": "mercados-autonomos",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "db:reset": "supabase db reset",
+    "db:seed:users": "tsx tests/setup/seed-users.ts",
+    "test": "vitest run",
+    "test:isolation": "vitest run tests/isolation.test.ts",
+    "test:escalation": "vitest run tests/escalation.test.ts"
+  },
+  "devDependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "dotenv": "^16.4.5",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  }
+}
